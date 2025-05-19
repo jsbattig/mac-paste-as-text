@@ -1,0 +1,498 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		/* Main App Files */
+		XXXXXXXX /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = XXXXXXXX /* AppDelegate.swift */; };
+		XXXXXXXX /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = XXXXXXXX /* main.swift */; };
+		
+		/* Extension Files */
+		XXXXXXXX /* ActionRequestHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = XXXXXXXX /* ActionRequestHandler.swift */; };
+		XXXXXXXX /* ActionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = XXXXXXXX /* ActionViewController.swift */; };
+		XXXXXXXX /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = XXXXXXXX /* MainInterface.storyboard */; };
+		
+		/* Preference Pane Files */
+		XXXXXXXX /* PasteAsTextPreferencePane.swift in Sources */ = {isa = PBXBuildFile; fileRef = XXXXXXXX /* PasteAsTextPreferencePane.swift */; };
+		XXXXXXXX /* PreferencesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = XXXXXXXX /* PreferencesManager.swift */; };
+		XXXXXXXX /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = XXXXXXXX /* KeychainManager.swift */; };
+		XXXXXXXX /* PasteAsTextPreferencePane.xib in Resources */ = {isa = PBXBuildFile; fileRef = XXXXXXXX /* PasteAsTextPreferencePane.xib */; };
+		
+		/* Domain Model Files */
+		XXXXXXXX /* ImageContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = XXXXXXXX /* ImageContent.swift */; };
+		XXXXXXXX /* ImageContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = XXXXXXXX /* ImageContent.swift */; };
+		XXXXXXXX /* ImageContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = XXXXXXXX /* ImageContent.swift */; };
+		XXXXXXXX /* ExtractedText.swift in Sources */ = {isa = PBXBuildFile; fileRef = XXXXXXXX /* ExtractedText.swift */; };
+		XXXXXXXX /* ExtractedText.swift in Sources */ = {isa = PBXBuildFile; fileRef = XXXXXXXX /* ExtractedText.swift */; };
+		XXXXXXXX /* ExtractedText.swift in Sources */ = {isa = PBXBuildFile; fileRef = XXXXXXXX /* ExtractedText.swift */; };
+		
+		/* Service Files */
+		XXXXXXXX /* AIServiceAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = XXXXXXXX /* AIServiceAdapter.swift */; };
+		XXXXXXXX /* AIServiceAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = XXXXXXXX /* AIServiceAdapter.swift */; };
+		XXXXXXXX /* AIServiceAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = XXXXXXXX /* AIServiceAdapter.swift */; };
+		XXXXXXXX /* GeminiAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = XXXXXXXX /* GeminiAdapter.swift */; };
+		XXXXXXXX /* GeminiAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = XXXXXXXX /* GeminiAdapter.swift */; };
+		XXXXXXXX /* GeminiAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = XXXXXXXX /* GeminiAdapter.swift */; };
+		XXXXXXXX /* AIServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = XXXXXXXX /* AIServiceManager.swift */; };
+		XXXXXXXX /* AIServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = XXXXXXXX /* AIServiceManager.swift */; };
+		XXXXXXXX /* AIServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = XXXXXXXX /* AIServiceManager.swift */; };
+		
+		/* Utility Files */
+		XXXXXXXX /* ClipboardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = XXXXXXXX /* ClipboardManager.swift */; };
+		XXXXXXXX /* ClipboardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = XXXXXXXX /* ClipboardManager.swift */; };
+		XXXXXXXX /* ClipboardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = XXXXXXXX /* ClipboardManager.swift */; };
+		
+		/* Resource Files */
+		XXXXXXXX /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = XXXXXXXX /* Assets.xcassets */; };
+		XXXXXXXX /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = XXXXXXXX /* Assets.xcassets */; };
+		XXXXXXXX /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = XXXXXXXX /* Assets.xcassets */; };
+		
+		/* Info.plist Files */
+		XXXXXXXX /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = XXXXXXXX /* Info.plist */; };
+		XXXXXXXX /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = XXXXXXXX /* Info.plist */; };
+		XXXXXXXX /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = XXXXXXXX /* Info.plist */; };
+		
+		/* Entitlements Files */
+		XXXXXXXX /* PasteAsText.entitlements in Resources */ = {isa = PBXBuildFile; fileRef = XXXXXXXX /* PasteAsText.entitlements */; };
+		XXXXXXXX /* PasteAsTextExtension.entitlements in Resources */ = {isa = PBXBuildFile; fileRef = XXXXXXXX /* PasteAsTextExtension.entitlements */; };
+		XXXXXXXX /* PasteAsTextPreferencePane.entitlements in Resources */ = {isa = PBXBuildFile; fileRef = XXXXXXXX /* PasteAsTextPreferencePane.entitlements */; };
+		
+		/* Test Files */
+		XXXXXXXX /* GeminiAdapterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = XXXXXXXX /* GeminiAdapterTests.swift */; };
+		XXXXXXXX /* ClipboardManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = XXXXXXXX /* ClipboardManagerTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		/* Main App Files */
+		XXXXXXXX /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		XXXXXXXX /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		
+		/* Extension Files */
+		XXXXXXXX /* ActionRequestHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionRequestHandler.swift; sourceTree = "<group>"; };
+		XXXXXXXX /* ActionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionViewController.swift; sourceTree = "<group>"; };
+		XXXXXXXX /* MainInterface.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainInterface.storyboard; sourceTree = "<group>"; };
+		
+		/* Preference Pane Files */
+		XXXXXXXX /* PasteAsTextPreferencePane.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasteAsTextPreferencePane.swift; sourceTree = "<group>"; };
+		XXXXXXXX /* PreferencesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesManager.swift; sourceTree = "<group>"; };
+		XXXXXXXX /* KeychainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainManager.swift; sourceTree = "<group>"; };
+		XXXXXXXX /* PasteAsTextPreferencePane.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PasteAsTextPreferencePane.xib; sourceTree = "<group>"; };
+		
+		/* Domain Model Files */
+		XXXXXXXX /* ImageContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageContent.swift; sourceTree = "<group>"; };
+		XXXXXXXX /* ExtractedText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtractedText.swift; sourceTree = "<group>"; };
+		
+		/* Service Files */
+		XXXXXXXX /* AIServiceAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIServiceAdapter.swift; sourceTree = "<group>"; };
+		XXXXXXXX /* GeminiAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeminiAdapter.swift; sourceTree = "<group>"; };
+		XXXXXXXX /* AIServiceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIServiceManager.swift; sourceTree = "<group>"; };
+		
+		/* Utility Files */
+		XXXXXXXX /* ClipboardManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClipboardManager.swift; sourceTree = "<group>"; };
+		
+		/* Resource Files */
+		XXXXXXXX /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		
+		/* Info.plist Files */
+		XXXXXXXX /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		XXXXXXXX /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		XXXXXXXX /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		
+		/* Entitlements Files */
+		XXXXXXXX /* PasteAsText.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PasteAsText.entitlements; sourceTree = "<group>"; };
+		XXXXXXXX /* PasteAsTextExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PasteAsTextExtension.entitlements; sourceTree = "<group>"; };
+		XXXXXXXX /* PasteAsTextPreferencePane.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PasteAsTextPreferencePane.entitlements; sourceTree = "<group>"; };
+		
+		/* Test Files */
+		XXXXXXXX /* GeminiAdapterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeminiAdapterTests.swift; sourceTree = "<group>"; };
+		XXXXXXXX /* ClipboardManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClipboardManagerTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		XXXXXXXX = {
+			isa = PBXGroup;
+			children = (
+				XXXXXXXX /* PasteAsText */,
+				XXXXXXXX /* PasteAsTextExtension */,
+				XXXXXXXX /* PasteAsTextPreferencePane */,
+				XXXXXXXX /* PasteAsTextTests */,
+				XXXXXXXX /* Shared */,
+				XXXXXXXX /* Resources */,
+				XXXXXXXX /* Products */,
+				XXXXXXXX /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		XXXXXXXX /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				XXXXXXXX /* PasteAsText.app */,
+				XXXXXXXX /* PasteAsTextExtension.appex */,
+				XXXXXXXX /* PasteAsTextPreferencePane.prefPane */,
+				XXXXXXXX /* PasteAsTextTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		XXXXXXXX /* PasteAsText */ = {
+			isa = PBXGroup;
+			children = (
+				XXXXXXXX /* AppDelegate.swift */,
+				XXXXXXXX /* main.swift */,
+				XXXXXXXX /* Info.plist */,
+				XXXXXXXX /* PasteAsText.entitlements */,
+			);
+			path = PasteAsText;
+			sourceTree = "<group>";
+		};
+		XXXXXXXX /* PasteAsTextExtension */ = {
+			isa = PBXGroup;
+			children = (
+				XXXXXXXX /* ActionRequestHandler.swift */,
+				XXXXXXXX /* ActionViewController.swift */,
+				XXXXXXXX /* MainInterface.storyboard */,
+				XXXXXXXX /* Info.plist */,
+				XXXXXXXX /* PasteAsTextExtension.entitlements */,
+			);
+			path = PasteAsTextExtension;
+			sourceTree = "<group>";
+		};
+		XXXXXXXX /* PasteAsTextPreferencePane */ = {
+			isa = PBXGroup;
+			children = (
+				XXXXXXXX /* PasteAsTextPreferencePane.swift */,
+				XXXXXXXX /* PreferencesManager.swift */,
+				XXXXXXXX /* KeychainManager.swift */,
+				XXXXXXXX /* PasteAsTextPreferencePane.xib */,
+				XXXXXXXX /* Info.plist */,
+				XXXXXXXX /* PasteAsTextPreferencePane.entitlements */,
+			);
+			path = PasteAsTextPreferencePane;
+			sourceTree = "<group>";
+		};
+		XXXXXXXX /* PasteAsTextTests */ = {
+			isa = PBXGroup;
+			children = (
+				XXXXXXXX /* GeminiAdapterTests.swift */,
+				XXXXXXXX /* ClipboardManagerTests.swift */,
+			);
+			path = PasteAsTextTests;
+			sourceTree = "<group>";
+		};
+		XXXXXXXX /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				XXXXXXXX /* Domain */,
+				XXXXXXXX /* Services */,
+				XXXXXXXX /* Utils */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		XXXXXXXX /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				XXXXXXXX /* Entities */,
+				XXXXXXXX /* ValueObjects */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		XXXXXXXX /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				XXXXXXXX /* ImageContent.swift */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		XXXXXXXX /* ValueObjects */ = {
+			isa = PBXGroup;
+			children = (
+				XXXXXXXX /* ExtractedText.swift */,
+			);
+			path = ValueObjects;
+			sourceTree = "<group>";
+		};
+		XXXXXXXX /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				XXXXXXXX /* AIServiceAdapter.swift */,
+				XXXXXXXX /* GeminiAdapter.swift */,
+				XXXXXXXX /* AIServiceManager.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		XXXXXXXX /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				XXXXXXXX /* ClipboardManager.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		XXXXXXXX /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				XXXXXXXX /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		XXXXXXXX /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				XXXXXXXX /* Cocoa.framework */,
+				XXXXXXXX /* PreferencePanes.framework */,
+				XXXXXXXX /* Security.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		XXXXXXXX /* PasteAsText */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = XXXXXXXX /* Build configuration list for PBXNativeTarget "PasteAsText" */;
+			buildPhases = (
+				XXXXXXXX /* Sources */,
+				XXXXXXXX /* Frameworks */,
+				XXXXXXXX /* Resources */,
+				XXXXXXXX /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				XXXXXXXX /* PBXTargetDependency */,
+			);
+			name = PasteAsText;
+			productName = PasteAsText;
+			productReference = XXXXXXXX /* PasteAsText.app */;
+			productType = "com.apple.product-type.application";
+		};
+		XXXXXXXX /* PasteAsTextExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = XXXXXXXX /* Build configuration list for PBXNativeTarget "PasteAsTextExtension" */;
+			buildPhases = (
+				XXXXXXXX /* Sources */,
+				XXXXXXXX /* Frameworks */,
+				XXXXXXXX /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PasteAsTextExtension;
+			productName = PasteAsTextExtension;
+			productReference = XXXXXXXX /* PasteAsTextExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		XXXXXXXX /* PasteAsTextPreferencePane */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = XXXXXXXX /* Build configuration list for PBXNativeTarget "PasteAsTextPreferencePane" */;
+			buildPhases = (
+				XXXXXXXX /* Sources */,
+				XXXXXXXX /* Frameworks */,
+				XXXXXXXX /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PasteAsTextPreferencePane;
+			productName = PasteAsTextPreferencePane;
+			productReference = XXXXXXXX /* PasteAsTextPreferencePane.prefPane */;
+			productType = "com.apple.product-type.bundle";
+		};
+		XXXXXXXX /* PasteAsTextTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = XXXXXXXX /* Build configuration list for PBXNativeTarget "PasteAsTextTests" */;
+			buildPhases = (
+				XXXXXXXX /* Sources */,
+				XXXXXXXX /* Frameworks */,
+				XXXXXXXX /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				XXXXXXXX /* PBXTargetDependency */,
+			);
+			name = PasteAsTextTests;
+			productName = PasteAsTextTests;
+			productReference = XXXXXXXX /* PasteAsTextTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin XCBuildConfiguration section */
+		XXXXXXXX /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		XXXXXXXX /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		XXXXXXXX /* Build configuration list for PBXProject "PasteAsText" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				XXXXXXXX /* Debug */,
+				XXXXXXXX /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		XXXXXXXX /* Build configuration list for PBXNativeTarget "PasteAsText" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				XXXXXXXX /* Debug */,
+				XXXXXXXX /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		XXXXXXXX /* Build configuration list for PBXNativeTarget "PasteAsTextExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				XXXXXXXX /* Debug */,
+				XXXXXXXX /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		XXXXXXXX /* Build configuration list for PBXNativeTarget "PasteAsTextPreferencePane" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				XXXXXXXX /* Debug */,
+				XXXXXXXX /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		XXXXXXXX /* Build configuration list for PBXNativeTarget "PasteAsTextTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				XXXXXXXX /* Debug */,
+				XXXXXXXX /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = XXXXXXXX /* Project object */;
+}
