@@ -1,0 +1,85 @@
+name: Build and Package
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: macos-latest
+    
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Set up Xcode
+      uses: maxim-lobanov/setup-xcode@v1
+      with:
+        xcode-version: latest-stable
+    
+    - name: Install dependencies
+      run: |
+        brew install create-dmg
+    
+    - name: Build application
+      run: |
+        # This will be updated once we have the Xcode project
+        echo "Building application..."
+        # xcodebuild -project PasteAsText.xcodeproj -scheme PasteAsText -configuration Release -derivedDataPath build
+    
+    - name: Create DMG
+      run: |
+        # This will be updated once we have the built application
+        echo "Creating DMG package..."
+        mkdir -p dist
+        # create-dmg \
+        #   --volname "Paste as Text" \
+        #   --volicon "resources/icons/AppIcon.icns" \
+        #   --window-pos 200 120 \
+        #   --window-size 800 400 \
+        #   --icon-size 100 \
+        #   --icon "Paste as Text.app" 200 190 \
+        #   --hide-extension "Paste as Text.app" \
+        #   --app-drop-link 600 185 \
+        #   "dist/PasteAsText.dmg" \
+        #   "build/Release/Paste as Text.app"
+    
+    - name: Upload DMG artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: PasteAsText-DMG
+        path: dist/
+        if-no-files-found: ignore
+
+  release:
+    needs: build
+    if: startsWith(github.ref, 'refs/tags/')
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Download DMG artifact
+      uses: actions/download-artifact@v3
+      with:
+        name: PasteAsText-DMG
+        path: ./
+    
+    - name: Create Release
+      uses: softprops/action-gh-release@v1
+      with:
+        files: "*.dmg"
+        body: |
+          # Paste as Text Release
+          
+          ## Installation Instructions
+          
+          1. Download the DMG file
+          2. Open the DMG file
+          3. Drag the application to your Applications folder
+          4. When launching for the first time, right-click and select "Open"
+          5. Click "Open" when prompted about the unidentified developer
+          
+          ## Changes in this release
+          
+          [Release notes will be added here]
