@@ -104,9 +104,32 @@ The project follows DDD principles:
 
 The development process follows TDD:
 
-1. Write a failing test
-2. Implement the minimum code to make the test pass
-3. Refactor while keeping tests passing
+1. **Write a failing test**: Create tests that define the expected behavior before implementing the actual code
+2. **Implement the minimum code**: Write just enough code to make the tests pass
+3. **Refactor**: Improve the code while ensuring tests continue to pass
+4. **Repeat**: Continue the cycle for each new feature or component
+
+#### TDD Implementations
+
+The project includes TDD implementations for key components:
+
+- **ClipboardManager**:
+  - `tests/unit/ClipboardManagerTDD.swift` - Tests for clipboard operations
+  - `src/utils/ClipboardManagerTDD.swift` - Implementation that passes the tests
+
+- **GeminiAdapter**:
+  - `tests/unit/GeminiAdapterTDD.swift` - Tests for AI service adapter
+  - `src/services/GeminiAdapterTDD.swift` - Implementation that passes the tests
+
+#### Running Tests
+
+The project includes a test runner script that can be used to run the tests:
+
+```bash
+./scripts/run_tests.sh
+```
+
+This script will run all the tests and report the results. In a CI/CD environment, tests are automatically run as part of the build process.
 
 ### KISS and DRY Principles
 
@@ -218,9 +241,31 @@ Logging is controlled by the `debugLogging` preference.
 
 ### Testing
 
+#### Using Xcode
+
 1. Run the unit tests in Xcode (⌘U)
 2. Run the integration tests
 3. Run the UI tests
+
+#### Using Command Line
+
+You can run tests from the command line using the test runner script:
+
+```bash
+./scripts/run_tests.sh
+```
+
+#### TDD Workflow
+
+For new features, follow the TDD workflow:
+
+1. Create a new test file in the appropriate test directory
+2. Write tests that define the expected behavior
+3. Run the tests to verify they fail
+4. Implement the minimum code to make the tests pass
+5. Run the tests again to verify they pass
+6. Refactor the code while keeping the tests passing
+7. Commit both the tests and the implementation
 
 ### Continuous Integration
 
@@ -236,10 +281,13 @@ To contribute to the project:
 
 1. Fork the repository
 2. Create a feature branch
-3. Make your changes
-4. Add tests for your changes
-5. Ensure all tests pass
-6. Submit a pull request
+3. **Write tests first** following the TDD approach
+4. Implement your changes to make the tests pass
+5. Refactor your code while keeping tests passing
+6. Ensure all tests pass (both your new tests and existing ones)
+7. Submit a pull request
+
+Remember that we follow the Test-Driven Development approach, so new features should always be accompanied by tests that were written before the implementation.
 
 ### Code Style Guidelines
 
