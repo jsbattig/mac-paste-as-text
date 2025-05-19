@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="21507" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="21507"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="PasteAsTextPreferencePane" customModule="PasteAsTextPreferencePane" customModuleProvider="target">
+            <connections>
+                <outlet property="apiKeyField" destination="XYZ-12-345" id="API-12-KEY"/>
+                <outlet property="autoPasteCheckbox" destination="ABC-12-345" id="APC-12-345"/>
+                <outlet property="confidenceLabel" destination="CON-12-LBL" id="CLB-12-345"/>
+                <outlet property="confidenceSlider" destination="CON-12-SLD" id="CSL-12-345"/>
+                <outlet property="languagePopup" destination="LNG-12-345" id="LPU-12-345"/>
+                <outlet property="notificationsCheckbox" destination="NOT-12-345" id="NCB-12-345"/>
+                <outlet property="retriesField" destination="RET-12-FLD" id="RFL-12-345"/>
+                <outlet property="retriesStepper" destination="RET-12-STP" id="RST-12-345"/>
+                <outlet property="servicePopup" destination="SRV-12-345" id="SPU-12-345"/>
+                <outlet property="_window" destination="F0z-JX-Cv5" id="gIp-Ho-8D9"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <window title="Paste as Text Preferences" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" deferred="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="F0z-JX-Cv5" userLabel="PrefPane">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
+            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+            <rect key="contentRect" x="176" y="715" width="668" height="368"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1025"/>
+            <view key="contentView" id="se5-gp-TjO">
+                <rect key="frame" x="0.0" y="0.0" width="668" height="368"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <!-- This is a placeholder for the actual UI elements -->
+                    <!-- In a real XIB file, this would contain all the UI elements -->
+                    <!-- For now, we're just providing a skeleton structure -->
+                    
+                    <!-- AI Service Selection Section -->
+                    <box title="AI Service" translatesAutoresizingMaskIntoConstraints="NO" id="SRV-12-BOX">
+                        <rect key="frame" x="17" y="258" width="634" height="90"/>
+                        <view key="contentView" id="SRV-12-VIW">
+                            <rect key="frame" x="3" y="3" width="628" height="72"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <subviews>
+                                <popUpButton id="SRV-12-345" translatesAutoresizingMaskIntoConstraints="NO">
+                                    <rect key="frame" x="140" y="40" width="200" height="25"/>
+                                    <popUpButtonCell key="cell" type="push" title="Google Gemini" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" inset="2" selectedItem="SRV-12-ITM" id="SRV-12-CEL">
+                                        <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                        <font key="font" metaFont="menu"/>
+                                        <menu key="menu" id="SRV-12-MNU">
+                                            <items>
+                                                <menuItem title="Google Gemini" state="on" id="SRV-12-ITM"/>
+                                                <menuItem title="OpenAI" id="SRV-12-OAI"/>
+                                                <menuItem title="Anthropic Claude" id="SRV-12-ANT"/>
+                                            </items>
+                                        </menu>
+                                    </popUpButtonCell>
+                                    <connections>
+                                        <action selector="serviceChanged:" target="-2" id="SRV-12-ACT"/>
+                                    </connections>
+                                </popUpButton>
+                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO">
+                                    <rect key="frame" x="18" y="45" width="116" height="16"/>
+                                    <textFieldCell key="cell" lineBreakMode="clipping" title="AI Service:" id="SRV-12-LBL">
+                                        <font key="font" metaFont="system"/>
+                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                </textField>
+                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO">
+                                    <rect key="frame" x="18" y="15" width="116" height="16"/>
+                                    <textFieldCell key="cell" lineBreakMode="clipping" title="API Key:" id="API-12-LBL">
+                                        <font key="font" metaFont="system"/>
+                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                </textField>
+                                <secureTextField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="XYZ-12-345">
+                                    <rect key="frame" x="140" y="12" width="360" height="21"/>
+                                    <secureTextFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="API-12-CEL">
+                                        <font key="font" metaFont="system"/>
+                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        <allowedInputSourceLocales>
+                                            <string>NSAllRomanInputSourcesLocaleIdentifier</string>
+                                        </allowedInputSourceLocales>
+                                    </secureTextFieldCell>
+                                </secureTextField>
+                                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="API-12-BTN">
+                                    <rect key="frame" x="506" y="7" width="82" height="32"/>
+                                    <buttonCell key="cell" type="push" title="Save" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="API-12-CEL">
+                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                        <font key="font" metaFont="system"/>
+                                    </buttonCell>
+                                    <connections>
+                                        <action selector="saveAPIKey:" target="-2" id="API-12-ACT"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                        </view>
+                    </box>
+                    
+                    <!-- General Settings Section -->
+                    <box title="General Settings" translatesAutoresizingMaskIntoConstraints="NO" id="GEN-12-BOX">
+                        <rect key="frame" x="17" y="148" width="634" height="100"/>
+                        <view key="contentView" id="GEN-12-VIW">
+                            <rect key="frame" x="3" y="3" width="628" height="82"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <subviews>
+                                <!-- Language selection -->
+                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO">
+                                    <rect key="frame" x="18" y="45" width="116" height="16"/>
+                                    <textFieldCell key="cell" lineBreakMode="clipping" title="Language:" id="LNG-12-LBL">
+                                        <font key="font" metaFont="system"/>
+                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                </textField>
+                                <popUpButton id="LNG-12-345" translatesAutoresizingMaskIntoConstraints="NO">
+                                    <rect key="frame" x="140" y="40" width="200" height="25"/>
+                                    <popUpButtonCell key="cell" type="push" title="English" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" inset="2" selectedItem="LNG-12-ENG" id="LNG-12-CEL">
+                                        <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                        <font key="font" metaFont="menu"/>
+                                        <menu key="menu" id="LNG-12-MNU">
+                                            <items>
+                                                <menuItem title="English" state="on" id="LNG-12-ENG"/>
+                                                <menuItem title="Spanish" id="LNG-12-ESP"/>
+                                                <menuItem title="French" id="LNG-12-FRA"/>
+                                                <menuItem title="German" id="LNG-12-DEU"/>
+                                                <menuItem title="Chinese" id="LNG-12-ZHO"/>
+                                                <menuItem title="Japanese" id="LNG-12-JPN"/>
+                                            </items>
+                                        </menu>
+                                    </popUpButtonCell>
+                                    <connections>
+                                        <action selector="languageChanged:" target="-2" id="LNG-12-ACT"/>
+                                    </connections>
+                                </popUpButton>
+                                
+                                <!-- Auto-paste checkbox -->
+                                <button translatesAutoresizingMaskIntoConstraints="NO" id="ABC-12-345">
+                                    <rect key="frame" x="18" y="15" width="200" height="18"/>
+                                    <buttonCell key="cell" type="check" title="Auto-paste extracted text" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="APC-12-CEL">
+                                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                        <font key="font" metaFont="system"/>
+                                    </buttonCell>
+                                    <connections>
+                                        <action selector="autoPasteChanged:" target="-2" id="APC-12-ACT"/>
+                                    </connections>
+                                </button>
+                                
+                                <!-- Notifications checkbox -->
+                                <button translatesAutoresizingMaskIntoConstraints="NO" id="NOT-12-345">
+                                    <rect key="frame" x="350" y="15" width="200" height="18"/>
+                                    <buttonCell key="cell" type="check" title="Show notifications" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="NOT-12-CEL">
+                                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                        <font key="font" metaFont="system"/>
+                                    </buttonCell>
+                                    <connections>
+                                        <action selector="notificationsChanged:" target="-2" id="NOT-12-ACT"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                        </view>
+                    </box>
+                    
+                    <!-- Advanced Settings Section -->
+                    <box title="Advanced Settings" translatesAutoresizingMaskIntoConstraints="NO" id="ADV-12-BOX">
+                        <rect key="frame" x="17" y="17" width="634" height="121"/>
+                        <view key="contentView" id="ADV-12-VIW">
+                            <rect key="frame" x="3" y="3" width="628" height="103"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <subviews>
+                                <!-- Confidence threshold -->
+                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO">
+                                    <rect key="frame" x="18" y="65" width="150" height="16"/>
+                                    <textFieldCell key="cell" lineBreakMode="clipping" title="Confidence Threshold:" id="CON-12-TXT">
+                                        <font key="font" metaFont="system"/>
+                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                </textField>
+                                <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="CON-12-SLD">
+                                    <rect key="frame" x="172" y="65" width="200" height="17"/>
+                                    <sliderCell key="cell" state="on" alignment="left" minValue="0.0" maxValue="1" doubleValue="0.0" tickMarkPosition="above" numberOfTickMarks="11" sliderType="linear" id="CON-12-CEL"/>
+                                    <connections>
+                                        <action selector="confidenceChanged:" target="-2" id="CON-12-ACT"/>
+                                    </connections>
+                                </slider>
+                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="CON-12-LBL">
+                                    <rect key="frame" x="376" y="65" width="30" height="16"/>
+                                    <textFieldCell key="cell" lineBreakMode="clipping" title="0%" id="CON-12-PCT">
+                                        <font key="font" metaFont="system"/>
+                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                </textField>
+                                
+                                <!-- Max retries -->
+                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO">
+                                    <rect key="frame" x="18" y="35" width="150" height="16"/>
+                                    <textFieldCell key="cell" lineBreakMode="clipping" title="Max Retries:" id="RET-12-TXT">
+                                        <font key="font" metaFont="system"/>
+                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                </textField>
+                                <stepper horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="RET-12-STP">
+                                    <rect key="frame" x="172" y="33" width="19" height="27"/>
+                                    <stepperCell key="cell" continuous="YES" alignment="left" minValue="0" maxValue="10" doubleValue="3" id="RET-12-CEL"/>
+                                    <connections>
+                                        <action selector="retriesChanged:" target="-2" id="RET-12-ACT"/>
+                                    </connections>
+                                </stepper>
+                                <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="RET-12-FLD">
+                                    <rect key="frame" x="195" y="35" width="50" height="21"/>
+                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" title="3" drawsBackground="YES" id="RET-12-TFC">
+                                        <numberFormatter key="formatter" formatterBehavior="default10_4" minimum="0" maximum="10" formatWidth="-1" usesGroupingSeparator="NO" groupingSize="0" minimumIntegerDigits="0" maximumIntegerDigits="42" id="RET-12-FMT"/>
+                                        <font key="font" metaFont="system"/>
+                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                    <connections>
+                                        <action selector="retriesFieldChanged:" target="-2" id="RET-12-FCT"/>
+                                    </connections>
+                                </textField>
+                                
+                                <!-- Reset button -->
+                                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="RST-12-BTN">
+                                    <rect key="frame" x="506" y="7" width="82" height="32"/>
+                                    <buttonCell key="cell" type="push" title="Reset" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="RST-12-CEL">
+                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                        <font key="font" metaFont="system"/>
+                                    </buttonCell>
+                                    <connections>
+                                        <action selector="resetToDefaults:" target="-2" id="RST-12-ACT"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                        </view>
+                    </box>
+                </subviews>
+            </view>
+            <point key="canvasLocation" x="139" y="144"/>
+        </window>
+    </objects>
+</document>
