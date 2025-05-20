@@ -182,10 +182,26 @@ This document outlines the detailed next steps to complete the "Paste as Text" m
 
 ## Immediate Next Actions
 
-1. Create the Xcode project structure
-2. Import existing TDD implementations
-3. Set up the test environment
+1. Create the Xcode project structure using the automated script:
+   ```bash
+   ./scripts/create_xcode_project.sh
+   ```
+   This script will:
+   - Create the Xcode project file structure
+   - Set up the targets and build configurations
+   - Configure the entitlements and capabilities
+   - Import existing TDD implementations
+   - Set up the test environment
+
+2. Open the generated Xcode project:
+   ```bash
+   open PasteAsText.xcodeproj
+   ```
+
+3. Review and adjust the project settings if needed
+
 4. Begin implementing the main application UI
+
 5. Start working on the context menu extension
 
 These steps should be followed in order, continuing with our TDD approach by writing tests first, then implementing the code to make those tests pass.
