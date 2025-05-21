@@ -21,6 +21,8 @@ A macOS extension that adds a "Paste as Text" option to context menus, allowing 
 - [User Guide](docs/user_guide.md) - How to use the extension
 - [Developer Guide](docs/developer_guide.md) - Understanding the codebase
 - [Xcode Setup Guide](docs/xcode_setup_guide.md) - Setting up the Xcode project
+- [Next Steps](docs/next_steps.md) - Detailed roadmap for implementation
+- [Remaining Tasks](docs/remaining_tasks.md) - Prioritized task list with checkboxes
 
 ## Project Structure
 
@@ -38,6 +40,10 @@ A macOS extension that adds a "Paste as Text" option to context menus, allowing 
 - `/resources`: Static resources like icons and assets
 - `/docs`: Additional documentation
 - `/scripts`: Build and deployment scripts
+  - `create_xcode_project.sh` - Automated Xcode project creation
+  - `run_tests.sh` - Test runner for TDD workflow
+  - `build_dmg.sh` - DMG package creation
+  - `generate_placeholder_icons.sh` - Icon generation
 - `/memory-bank`: Project memory bank with architecture details, technical decisions, and future plans
 
 ## Memory Bank
@@ -83,12 +89,17 @@ This project follows:
    cd mac-paste-as-text
    ```
 
-2. Set up the Xcode project:
+2. Create the Xcode project automatically:
    ```bash
-   ./scripts/setup_xcode_project.sh
+   ./scripts/create_xcode_project.sh
    ```
 
-3. Follow the [Xcode Setup Guide](docs/xcode_setup_guide.md) to complete the setup
+3. Open the generated Xcode project:
+   ```bash
+   open PasteAsText.xcodeproj
+   ```
+
+4. Review the project settings and start implementing the [remaining tasks](docs/remaining_tasks.md)
 
 4. Build and run the application in Xcode
 
