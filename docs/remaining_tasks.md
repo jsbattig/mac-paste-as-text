@@ -5,23 +5,23 @@ This document outlines the specific remaining tasks to complete the "Paste as Te
 ## 1. Main Application Implementation
 
 ### 1.1. Application UI
-- [ ] Design and implement main window interface
-- [ ] Create application menu items
-- [ ] Implement status bar icon and menu
-- [ ] Add about window and credits
+- [x] Design and implement main window interface
+- [x] Create application menu items
+- [x] Implement status bar icon and menu
+- [x] Add about window and credits
 
 ### 1.2. Core Functionality
-- [ ] Implement URL scheme handler for extension communication
+- [x] Implement URL scheme handler for extension communication
 - [ ] Create image processing pipeline
-- [ ] Implement text extraction workflow
-- [ ] Add clipboard monitoring service
-- [ ] Create notification system for extraction results
+- [x] Implement text extraction workflow
+- [x] Add clipboard monitoring service
+- [x] Create notification system for extraction results
 
 ### 1.3. User Preferences
-- [ ] Implement preferences storage using UserDefaults
-- [ ] Create default settings configuration
-- [ ] Add preferences synchronization
-- [ ] Implement preferences migration for updates
+- [x] Implement preferences storage using UserDefaults
+- [x] Create default settings configuration
+- [x] Add preferences synchronization
+- [x] Implement preferences migration for updates
 
 ## 2. Context Menu Extension Implementation
 
@@ -80,14 +80,14 @@ This document outlines the specific remaining tasks to complete the "Paste as Te
 ## 5. Security and Privacy
 
 ### 5.1. Secure Storage
-- [ ] Complete Keychain integration for API keys
+- [x] Complete Keychain integration for API keys
 - [ ] Implement secure temporary file handling
 - [ ] Add data sanitization
-- [ ] Create secure deletion of sensitive data
+- [x] Create secure deletion of sensitive data
 
 ### 5.2. Privacy Features
 - [ ] Implement privacy policy
-- [ ] Add required privacy disclosures
+- [x] Add required privacy disclosures
 - [ ] Create usage analytics (opt-in)
 - [ ] Add data minimization features
 
@@ -152,10 +152,10 @@ This document outlines the specific remaining tasks to complete the "Paste as Te
    ./scripts/create_xcode_project.sh
    ```
 
-2. **Implement Main Application Core**:
-   - URL scheme handler
-   - Basic UI
-   - Clipboard monitoring
+2. ✅ **Implement Main Application Core**:
+   - ✅ URL scheme handler
+   - ✅ Basic UI
+   - ✅ Clipboard monitoring
 
 3. **Complete Context Menu Extension**:
    - Extension activation
@@ -164,8 +164,8 @@ This document outlines the specific remaining tasks to complete the "Paste as Te
 
 4. **Implement Preference Pane Basics**:
    - Basic UI
-   - Settings storage
-   - API key management
+   - ✅ Settings storage
+   - ✅ API key management
 
 5. **Finalize AI Service Integration**:
    - Complete Gemini adapter
