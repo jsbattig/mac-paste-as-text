@@ -1,161 +1,369 @@
 import Cocoa
 
-@main
 class AppDelegate: NSObject, NSApplicationDelegate {
-    /// The main window controller
-    var mainWindowController: NSWindowController?
     
-    /// Application did finish launching
-    /// - Parameter notification: The notification
+    // Status bar item
+    private var statusItem: NSStatusItem?
+    
+    // Main window controller
+    private var mainWindowController: NSWindowController?
+    
+    // Preferences window controller
+    private var preferencesWindowController: NSWindowController?
+    
+    // Service manager
+    private var serviceManager: AIServiceManager?
+    
+    // Clipboard manager
+    private var clipboardManager: ClipboardManager?
+    
+    // Preferences manager
+    private var preferencesManager: PreferencesManager?
+    
+    // URL scheme handler
+    private var urlSchemeHandler: URLSchemeHandler?
+    
     func applicationDidFinishLaunching(_ notification: Notification) {
-        // Register for URL events
+        // Initialize managers
+        initializeManagers()
+        
+        // Set up status bar
+        setupStatusBar()
+        
+        // Register for URL scheme
+        registerURLScheme()
+        
+        // Check for first launch
+        checkFirstLaunch()
+        
+        // Start clipboard monitoring if enabled
+        startClipboardMonitoringIfEnabled()
+    }
+    
+    func applicationWillTerminate(_ notification: Notification) {
+        // Stop clipboard monitoring
+        clipboardManager?.stopMonitoring()
+        
+        // Save preferences
+        preferencesManager?.savePreferences()
+    }
+    
+    // MARK: - Initialization
+    
+    private func initializeManagers() {
+        // Initialize service manager
+        serviceManager = AIServiceManager.shared
+        
+        // Initialize clipboard manager
+        clipboardManager = ClipboardManager.shared
+        
+        // Initialize preferences manager
+        preferencesManager = PreferencesManager.shared
+        
+        // Initialize URL scheme handler
+        urlSchemeHandler = URLSchemeHandler(delegate: self)
+    }
+    
+    // MARK: - Status Bar
+    
+    private func setupStatusBar() {
+        // Create status bar item
+        statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.squareLength)
+        
+        if let button = statusItem?.button {
+            // Set status bar icon
+            button.image = NSImage(named: "StatusBarIcon")
+            button.image?.isTemplate = true
+            
+            // Set status bar menu
+            let menu = createStatusBarMenu()
+            statusItem?.menu = menu
+        }
+    }
+    
+    private func createStatusBarMenu() -> NSMenu {
+        let menu = NSMenu()
+        
+        // Extract Text from Clipboard
+        menu.addItem(NSMenuItem(title: "Extract Text from Clipboard", action: #selector(extractTextFromClipboard), keyEquivalent: "e"))
+        
+        // Separator
+        menu.addItem(NSMenuItem.separator())
+        
+        // Preferences
+        menu.addItem(NSMenuItem(title: "Preferences...", action: #selector(showPreferences), keyEquivalent: ","))
+        
+        // Separator
+        menu.addItem(NSMenuItem.separator())
+        
+        // About
+        menu.addItem(NSMenuItem(title: "About Paste as Text", action: #selector(showAbout), keyEquivalent: ""))
+        
+        // Quit
+        menu.addItem(NSMenuItem(title: "Quit", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q"))
+        
+        return menu
+    }
+    
+    // MARK: - URL Scheme
+    
+    private func registerURLScheme() {
+        // Register for URL scheme events
         NSAppleEventManager.shared().setEventHandler(
             self,
             andSelector: #selector(handleURLEvent(_:withReplyEvent:)),
             forEventClass: AEEventClass(kInternetEventClass),
             andEventID: AEEventID(kAEGetURL)
         )
-        
-        // Set up the main window if needed
-        setupMainWindow()
     }
     
-    /// Handle URL events (custom URL scheme)
-    /// - Parameters:
-    ///   - event: The Apple event
-    ///   - replyEvent: The reply event
-    @objc func handleURLEvent(_ event: NSAppleEventDescriptor, withReplyEvent replyEvent: NSAppleEventDescriptor) {
+    @objc private func handleURLEvent(_ event: NSAppleEventDescriptor, withReplyEvent replyEvent: NSAppleEventDescriptor) {
+        // Extract URL from event
         guard let urlString = event.paramDescriptor(forKeyword: AEKeyword(keyDirectObject))?.stringValue,
               let url = URL(string: urlString) else {
             return
         }
         
-        // Handle the URL
-        handleURL(url)
+        // Handle URL
+        urlSchemeHandler?.handleURL(url)
     }
     
-    /// Handle a URL
-    /// - Parameter url: The URL
-    private func handleURL(_ url: URL) {
-        // Check if this is our custom URL scheme
-        guard url.scheme == "pasteAsText" else {
-            return
+    // MARK: - First Launch
+    
+    private func checkFirstLaunch() {
+        if preferencesManager?.isFirstLaunch == true {
+            // Show welcome window
+            showWelcomeWindow()
+            
+            // Set first launch flag to false
+            preferencesManager?.isFirstLaunch = false
         }
+    }
+    
+    private func showWelcomeWindow() {
+        // Create and show welcome window
+        let welcomeWindowController = WelcomeWindowController()
+        welcomeWindowController.showWindow(nil)
         
-        // Handle different actions
-        switch url.host {
-        case "process":
-            processClipboardImage()
-        case "settings":
-            showSettings()
-        default:
-            break
+        // Keep a reference to the window controller
+        mainWindowController = welcomeWindowController
+    }
+    
+    // MARK: - Clipboard Monitoring
+    
+    private func startClipboardMonitoringIfEnabled() {
+        if preferencesManager?.isClipboardMonitoringEnabled == true {
+            clipboardManager?.startMonitoring(delegate: self)
         }
     }
     
-    /// Process an image from the clipboard
-    private func processClipboardImage() {
+    // MARK: - Actions
+    
+    @objc private func extractTextFromClipboard() {
         // Check if clipboard contains an image
-        guard let imageContent = ClipboardManager.shared.getImageFromClipboard() else {
-            showNotification(title: "No Image Found", body: "The clipboard does not contain an image.")
+        guard let image = clipboardManager?.getImageFromClipboard() else {
+            showNotification(title: "No Image Found", message: "The clipboard does not contain an image.")
             return
         }
         
-        // Extract text from the image
+        // Extract text from image
+        extractTextFromImage(image)
+    }
+    
+    @objc private func showPreferences() {
+        // Create preferences window if needed
+        if preferencesWindowController == nil {
+            preferencesWindowController = PreferencesWindowController()
+        }
+        
+        // Show preferences window
+        preferencesWindowController?.showWindow(nil)
+        NSApp.activate(ignoringOtherApps: true)
+    }
+    
+    @objc private func showAbout() {
+        // Show about panel
+        NSApp.orderFrontStandardAboutPanel(nil)
+        NSApp.activate(ignoringOtherApps: true)
+    }
+    
+    // MARK: - Text Extraction
+    
+    private func extractTextFromImage(_ image: NSImage) {
+        // Show progress indicator
+        showProgressIndicator()
+        
+        // Check if service manager is configured
+        guard serviceManager?.isSelectedAdapterConfigured() == true else {
+            hideProgressIndicator()
+            showNotification(title: "Service Not Configured", message: "Please configure an AI service in Preferences.")
+            showPreferences()
+            return
+        }
+        
+        // Extract text from image
         Task {
             do {
-                // Show processing notification
-                if PreferencesManager.shared.showNotifications {
-                    showNotification(title: "Processing Image", body: "Extracting text from image...")
-                }
-                
                 // Extract text
-                let extractedText = try await AIServiceManager.shared.extractText(from: imageContent)
+                let extractedText = try await serviceManager?.extractTextFromImage(image)
                 
-                // Check if text was extracted
-                if extractedText.isEmpty() {
-                    showNotification(title: "No Text Found", body: "No text could be extracted from the image.")
-                    return
-                }
+                // Hide progress indicator
+                hideProgressIndicator()
                 
-                // Write text to clipboard
-                ClipboardManager.shared.writeExtractedTextToClipboard(extractedText)
-                
-                // Show success notification
-                if PreferencesManager.shared.showNotifications {
-                    let summary = extractedText.summary(maxWords: 5)
-                    showNotification(title: "Text Extracted", body: "Text has been copied to clipboard: \(summary)")
-                }
-                
-                // Auto-paste if enabled
-                if PreferencesManager.shared.autoPaste {
-                    simulatePaste()
-                }
-            } catch AIServiceError.notConfigured {
-                showNotification(title: "Configuration Required", body: "Please configure the AI service in settings.")
-                showSettings()
-            } catch AIServiceError.rateLimitExceeded {
-                showNotification(title: "Rate Limit Exceeded", body: "The AI service rate limit has been exceeded. Please try again later.")
+                // Handle extracted text
+                handleExtractedText(extractedText)
             } catch {
-                showNotification(title: "Error", body: "Failed to extract text: \(error.localizedDescription)")
+                // Hide progress indicator
+                hideProgressIndicator()
+                
+                // Show error
+                showNotification(title: "Text Extraction Failed", message: error.localizedDescription)
             }
         }
     }
     
-    /// Show a notification
-    /// - Parameters:
-    ///   - title: The notification title
-    ///   - body: The notification body
-    private func showNotification(title: String, body: String) {
-        guard PreferencesManager.shared.showNotifications else {
+    private func handleExtractedText(_ extractedText: ExtractedText?) {
+        guard let extractedText = extractedText else {
+            showNotification(title: "Text Extraction Failed", message: "No text was extracted.")
             return
         }
         
-        let notification = NSUserNotification()
-        notification.title = title
-        notification.informativeText = body
-        notification.soundName = NSUserNotificationDefaultSoundName
+        // Copy text to clipboard
+        clipboardManager?.writeTextToClipboard(extractedText.text)
         
-        NSUserNotificationCenter.default.deliver(notification)
+        // Show notification
+        showNotification(title: "Text Extracted", message: "Text has been copied to clipboard.")
+        
+        // Auto-paste if enabled
+        if preferencesManager?.isAutoPasteEnabled == true {
+            autoPasteText()
+        }
     }
     
-    /// Simulate a paste operation
-    private func simulatePaste() {
-        // Create a paste keyboard event
+    private func autoPasteText() {
+        // Simulate Cmd+V keystroke
         let source = CGEventSource(stateID: .combinedSessionState)
         
-        // Command+V (paste)
-        let keyDown = CGEvent(keyboardEventSource: source, virtualKey: 0x09, keyDown: true)
-        keyDown?.flags = .maskCommand
+        // Key down for Cmd+V
+        let keyDownEvent = CGEvent(keyboardEventSource: source, virtualKey: 0x09, keyDown: true)
+        keyDownEvent?.flags = .maskCommand
+        keyDownEvent?.post(tap: .cghidEventTap)
         
-        let keyUp = CGEvent(keyboardEventSource: source, virtualKey: 0x09, keyDown: false)
-        keyUp?.flags = .maskCommand
+        // Key up for Cmd+V
+        let keyUpEvent = CGEvent(keyboardEventSource: source, virtualKey: 0x09, keyDown: false)
+        keyUpEvent?.flags = .maskCommand
+        keyUpEvent?.post(tap: .cghidEventTap)
+    }
+    
+    // MARK: - Progress Indicator
+    
+    private func showProgressIndicator() {
+        // Show progress indicator in status bar
+        if let button = statusItem?.button {
+            button.image = NSImage(named: "StatusBarIconProgress")
+        }
+    }
+    
+    private func hideProgressIndicator() {
+        // Hide progress indicator in status bar
+        if let button = statusItem?.button {
+            button.image = NSImage(named: "StatusBarIcon")
+        }
+    }
+    
+    // MARK: - Notifications
+    
+    private func showNotification(title: String, message: String) {
+        // Check if notifications are enabled
+        guard preferencesManager?.isNotificationsEnabled == true else {
+            return
+        }
         
-        // Post the events
-        keyDown?.post(tap: .cgAnnotatedSessionEventTap)
-        keyUp?.post(tap: .cgAnnotatedSessionEventTap)
+        // Create notification
+        let notification = NSUserNotification()
+        notification.title = title
+        notification.informativeText = message
+        notification.soundName = NSUserNotificationDefaultSoundName
+        
+        // Show notification
+        NSUserNotificationCenter.default.deliver(notification)
+    }
+}
+
+// MARK: - ClipboardManagerDelegate
+
+extension AppDelegate: ClipboardManagerDelegate {
+    func clipboardDidChangeWithImage(_ image: NSImage) {
+        // Check if automatic extraction is enabled
+        guard preferencesManager?.isAutomaticExtractionEnabled == true else {
+            return
+        }
+        
+        // Extract text from image
+        extractTextFromImage(image)
+    }
+}
+
+// MARK: - URLSchemeHandlerDelegate
+
+extension AppDelegate: URLSchemeHandlerDelegate {
+    func handleExtractTextCommand(fromURL url: URL) {
+        // Extract text from clipboard
+        extractTextFromClipboard()
+    }
+}
+
+// MARK: - Supporting Types
+
+protocol ClipboardManagerDelegate: AnyObject {
+    func clipboardDidChangeWithImage(_ image: NSImage)
+}
+
+protocol URLSchemeHandlerDelegate: AnyObject {
+    func handleExtractTextCommand(fromURL url: URL)
+}
+
+class URLSchemeHandler {
+    weak var delegate: URLSchemeHandlerDelegate?
+    
+    init(delegate: URLSchemeHandlerDelegate) {
+        self.delegate = delegate
     }
     
-    /// Show the settings window
-    private func showSettings() {
-        // Open System Preferences and select our preference pane
-        let prefPaneURL = URL(fileURLWithPath: "/System/Library/PreferencePanes/Profiles.prefPane")
-        NSWorkspace.shared.open(prefPaneURL)
+    func handleURL(_ url: URL) {
+        // Check if URL is for our scheme
+        guard url.scheme == "pasteastext" else {
+            return
+        }
+        
+        // Handle different commands
+        switch url.host {
+        case "extract":
+            delegate?.handleExtractTextCommand(fromURL: url)
+        default:
+            break
+        }
     }
-    
-    /// Set up the main window if needed
-    private func setupMainWindow() {
-        // For now, we don't need a main window as the app operates in the background
-        // This would be implemented if we need a UI for the main application
+}
+
+class WelcomeWindowController: NSWindowController {
+    override func windowDidLoad() {
+        super.windowDidLoad()
+        
+        // Configure window
+        window?.title = "Welcome to Paste as Text"
+        window?.center()
+        window?.isReleasedWhenClosed = false
     }
-    
-    /// Application will terminate
-    /// - Parameter notification: The notification
-    func applicationWillTerminate(_ notification: Notification) {
-        // Clean up
-        NSAppleEventManager.shared().removeEventHandler(
-            forEventClass: AEEventClass(kInternetEventClass),
-            andEventID: AEEventID(kAEGetURL)
-        )
+}
+
+class PreferencesWindowController: NSWindowController {
+    override func windowDidLoad() {
+        super.windowDidLoad()
+        
+        // Configure window
+        window?.title = "Paste as Text Preferences"
+        window?.center()
+        window?.isReleasedWhenClosed = false
     }
 }
